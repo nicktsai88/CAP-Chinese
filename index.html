@@ -655,6 +655,7 @@
                         <div class="text-lg font-bold text-gray-800 mb-6 leading-relaxed">
                             ${formatText(q.questionText)}
                         </div>
+                        ${q.image ? `<img src="${q.image.startsWith('http') ? q.image : './images/' + q.image}" alt="題目附圖" class="w-full max-w-2xl mx-auto rounded-xl shadow-sm border border-gray-200 mb-6 object-contain">` : ''}
                         
                         <div class="mb-6">
                             ${optionsHtml}
@@ -850,6 +851,7 @@
                     <div class="text-lg font-bold text-gray-800 mb-4 leading-relaxed">
                         ${formatText(q.questionText)}
                     </div>
+                    ${q.image ? `<img src="${q.image.startsWith('http') ? q.image : './images/' + q.image}" alt="題目附圖" class="w-full max-w-2xl mx-auto rounded-xl shadow-sm border border-gray-200 mb-4 object-contain">` : ''}
                     
                     <div class="w-full">
                         ${optionsHtml}
@@ -985,6 +987,7 @@
                         <div class="text-lg font-bold text-gray-800 mb-6 leading-relaxed">
                             ${formatText(q.questionText)}
                         </div>
+                        ${q.image ? `<img src="${q.image.startsWith('http') ? q.image : './images/' + q.image}" alt="題目附圖" class="w-full max-w-2xl mx-auto rounded-xl shadow-sm border border-gray-200 mb-6 object-contain">` : ''}
                         
                         <div class="mb-6">
                             ${optionsHtml}

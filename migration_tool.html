@@ -55,6 +55,11 @@
                             <textarea id="f-question" rows="4" placeholder="請輸入題目內容..." class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-400"></textarea>
                         </div>
 
+                        <div>
+                            <label class="block font-bold text-gray-600 mb-1">附圖檔名或網址 (選填)</label>
+                            <input type="text" id="f-image" placeholder="例如: q1.jpg 或是 https://..." class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-400 font-mono text-sm text-blue-600">
+                        </div>
+
                         <div class="space-y-2 border p-3 rounded-lg bg-gray-50">
                             <label class="block font-bold text-gray-700 mb-1">選項設定 *</label>
                             <div class="flex items-center gap-2"><span class="font-bold w-6 text-center">(A)</span><input type="text" id="f-optA" class="flex-1 px-2 py-1 rounded border"></div>
@@ -110,6 +115,7 @@
   {
     "number": "1",
     "questionText": "題目內容...",
+    "image": "q1.jpg",
     "options": ["選項A", "選項B", "選項C", "選項D"],
     "answer": 0, 
     "analysis": "題幹分析...",
@@ -284,7 +290,10 @@
                     <td class="p-3 text-center font-black text-gray-700 text-lg">#${q.number}</td>
                     <td class="p-3">
                         <div class="truncate max-w-[200px] md:max-w-[400px] text-gray-800 font-medium" title="${q.questionText}">${textPreview}</div>
-                        ${q.analysis ? `<div class="text-[10px] text-blue-500 mt-1"><i class="fas fa-lightbulb"></i> 包含解析</div>` : ''}
+                        <div class="flex gap-2">
+                            ${q.image ? `<div class="text-[10px] text-emerald-500 mt-1"><i class="fas fa-image"></i> 包含圖片</div>` : ''}
+                            ${q.analysis ? `<div class="text-[10px] text-blue-500 mt-1"><i class="fas fa-lightbulb"></i> 包含解析</div>` : ''}
+                        </div>
                     </td>
                     <td class="p-3 text-center">
                         <span class="bg-green-100 text-green-700 font-black px-2 py-1 rounded-full">${ansChar}</span>
@@ -303,6 +312,7 @@
             const volume = document.getElementById('f-volume').value;
             const number = document.getElementById('f-number').value.trim();
             const questionText = document.getElementById('f-question').value.trim();
+            const image = document.getElementById('f-image').value.trim();
             
             const optA = document.getElementById('f-optA').value.trim();
             const optB = document.getElementById('f-optB').value.trim();
@@ -324,7 +334,7 @@
             const docId = crypto.randomUUID();
             const payload = {
                 id: docId,
-                bank, volume, number, questionText,
+                bank, volume, number, questionText, image,
                 options: [optA, optB, optC, optD],
                 answer,
                 analysis,
@@ -336,7 +346,7 @@
                 await setDoc(doc(db, 'artifacts', appId, 'public', 'data', COLLECTION_NAME, docId), payload);
                 
                 // 清空表單
-                ['f-number', 'f-question', 'f-optA', 'f-optB', 'f-optC', 'f-optD', 'f-analysis', 'f-expA', 'f-expB', 'f-expC', 'f-expD']
+                ['f-number', 'f-question', 'f-image', 'f-optA', 'f-optB', 'f-optC', 'f-optD', 'f-analysis', 'f-expA', 'f-expB', 'f-expC', 'f-expD']
                     .forEach(id => document.getElementById(id).value = '');
                 
                 customAlert(`成功新增題目：${bank} ${volume} #${number}`);
@@ -351,6 +361,7 @@
   {
     "number": "1",
     "questionText": "題目內容...",
+    "image": "q1.jpg",
     "options": ["選項A", "選項B", "選項C", "選項D"],
     "answer": 0, 
     "analysis": "題幹分析...",
@@ -391,6 +402,7 @@
                         volume: targetVolume,
                         number: item.number || String(count+1),
                         questionText: item.questionText || item.題目 || '',
+                        image: item.image || item.圖片 || '',
                         options: item.options || item.選項 || ["選項缺漏", "選項缺漏", "選項缺漏", "選項缺漏"],
                         answer: parseInt(item.answer) || 0,
                         analysis: item.analysis || item.題幹分析 || '',
