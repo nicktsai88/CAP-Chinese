@@ -90,7 +90,7 @@
                 <div class="bg-white rounded-2xl p-8 max-w-sm w-full shadow-2xl text-center">
                     <div class="text-amber-500 text-5xl mb-4"><i class="fas fa-info-circle"></i></div>
                     <p class="text-gray-700 mb-6 font-bold text-lg md:text-2xl leading-relaxed">${msg}</p>
-                    <button id="btn-alert-ok" class="px-8 py-3 rounded-full font-bold bg-amber-500 text-white hover:bg-amber-600 transition-colors w-full text-xl md:text-2xl">知道了</button>
+                    <button id="btn-alert-ok" class="px-8 py-3 rounded-full font-bold bg-amber-500 text-white hover:bg-amber-600 transition-colors w-full text-xl">知道了</button>
                 </div>
             `;
             document.body.appendChild(overlay);
@@ -104,12 +104,12 @@
                 <div class="bg-white rounded-2xl p-8 max-w-sm w-full shadow-2xl">
                     <div class="flex items-center mb-4 text-red-500">
                         <i class="fas fa-exclamation-triangle text-3xl mr-3"></i>
-                        <h3 class="text-2xl md:text-3xl font-bold">請確認</h3>
+                        <h3 class="text-2xl font-bold">請確認</h3>
                     </div>
-                    <p class="text-gray-600 mb-8 font-medium text-xl md:text-2xl leading-relaxed">${msg}</p>
+                    <p class="text-gray-600 mb-8 font-medium text-xl leading-relaxed">${msg}</p>
                     <div class="flex justify-end space-x-4">
-                        <button id="btn-modal-no" class="px-6 py-3 rounded-xl font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors text-xl md:text-2xl">取消</button>
-                        <button id="btn-modal-yes" class="px-6 py-3 rounded-xl font-bold bg-red-500 text-white hover:bg-red-600 transition-colors text-xl md:text-2xl">確定執行</button>
+                        <button id="btn-modal-no" class="px-6 py-3 rounded-xl font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors text-xl">取消</button>
+                        <button id="btn-modal-yes" class="px-6 py-3 rounded-xl font-bold bg-red-500 text-white hover:bg-red-600 transition-colors text-xl">確定執行</button>
                     </div>
                 </div>
             `;
@@ -257,14 +257,14 @@
             currentTab = 'login';
             el('app').innerHTML = `
                 <div class="flex-1 flex items-center justify-center p-6 bg-gradient-to-br from-indigo-50 to-amber-50">
-                    <div class="w-full max-w-lg bg-white p-10 md:p-14 rounded-3xl shadow-xl border border-gray-100 text-center animate-fade-in">
-                        <div class="text-amber-500 text-7xl md:text-8xl mb-8"><i class="fas fa-book-open"></i></div>
-                        <h1 class="text-5xl md:text-6xl font-black text-gray-800 mb-6 tracking-wide">CAP<span class="text-amber-500">.Exam</span></h1>
-                        <p class="text-gray-500 mb-10 font-medium text-xl md:text-3xl">會考模擬試題線上測驗系統</p>
+                    <div class="w-full max-w-md bg-white p-10 rounded-2xl shadow-xl border border-gray-100 text-center animate-fade-in">
+                        <div class="text-amber-500 text-6xl mb-6"><i class="fas fa-book-open"></i></div>
+                        <h1 class="text-4xl md:text-5xl font-black text-gray-800 mb-4 tracking-wide">CAP<span class="text-amber-500">.Exam</span></h1>
+                        <p class="text-gray-500 mb-8 font-medium text-lg md:text-2xl">會考模擬試題解析與線上測驗</p>
                         
-                        <div class="space-y-6">
-                            <input type="text" id="usernameInput" placeholder="輸入姓名開始使用" class="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-50 text-center text-xl md:text-3xl font-bold text-gray-700 transition-all">
-                            <button onclick="handleLogin(document.getElementById('usernameInput').value)" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 px-6 rounded-xl shadow-md transition-colors text-xl md:text-3xl">
+                        <div class="space-y-4">
+                            <input type="text" id="usernameInput" placeholder="輸入姓名開始使用" class="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-50 text-center text-xl md:text-2xl font-bold text-gray-700 transition-all">
+                            <button onclick="handleLogin(document.getElementById('usernameInput').value)" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 px-6 rounded-xl shadow-md transition-colors text-xl md:text-2xl">
                                 系統登入
                             </button>
                         </div>
@@ -275,56 +275,45 @@
 
         window.renderMain = () => {
             el('app').innerHTML = `
-                <div class="flex flex-col md:flex-row w-full h-full relative">
+                <div class="flex flex-col md:flex-row w-full h-full">
                     <!-- Sidebar -->
-                    <aside id="app-sidebar" class="w-full md:w-80 bg-white border-r border-gray-200 flex flex-col shadow-sm z-20 shrink-0 h-auto md:h-full transition-all duration-300 relative">
-                        
-                        <!-- Toggle Button (Desktop Only) -->
-                        <button onclick="toggleSidebar()" class="hidden md:flex absolute -right-4 top-8 w-8 h-8 bg-white border border-gray-200 rounded-full items-center justify-center text-gray-500 hover:text-amber-500 hover:border-amber-400 shadow-sm transition-colors z-30">
-                            <i id="sidebar-toggle-icon" class="fas fa-chevron-left text-sm"></i>
-                        </button>
-
-                        <div class="p-6 border-b border-gray-100 text-center flex flex-col items-center justify-center">
-                            <h1 class="text-4xl md:text-5xl font-black text-amber-500 tracking-wider mb-2 sidebar-text">CAP<span class="text-gray-800">.Exam</span></h1>
-                            <h1 class="text-3xl font-black text-amber-500 hidden mb-2" id="sidebar-mini-logo">C<span class="text-gray-800">E</span></h1>
-                            <p class="text-base md:text-lg text-gray-500 font-bold sidebar-text whitespace-nowrap">會考模擬試題線上測驗</p>
+                    <aside class="w-full md:w-80 bg-white border-r border-gray-200 flex flex-col shadow-sm z-20 shrink-0 h-auto md:h-full">
+                        <div class="p-6 border-b border-gray-100 text-center">
+                            <h1 class="text-4xl md:text-5xl font-black text-amber-500 tracking-wider mb-2">CAP<span class="text-gray-800">.Exam</span></h1>
+                            <p class="text-base md:text-lg text-gray-500 font-bold">線上測驗與解析系統</p>
                         </div>
                         
-                        <div id="sidebar-profile" class="p-8 flex flex-col items-center justify-center border-b border-gray-100 transition-all duration-300">
+                        <div class="p-8 flex flex-col items-center justify-center border-b border-gray-100">
                             <div class="w-24 h-24 md:w-32 md:h-32 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 text-5xl md:text-6xl mb-6 border-4 border-white shadow-sm">
                                 <i class="fas fa-user-graduate"></i>
                             </div>
-                            <p class="text-2xl md:text-3xl font-black text-gray-700 truncate w-full text-center sidebar-text">${username}，您好！</p>
+                            <p class="text-2xl md:text-3xl font-black text-gray-700">${username}，您好！</p>
                         </div>
 
                         <nav class="flex-1 overflow-y-auto py-6 flex flex-row md:flex-col overflow-x-auto md:overflow-x-hidden">
-                            <button onclick="switchTab('learn')" id="nav-learn" class="nav-item active w-full flex items-center px-8 md:px-6 py-5 md:py-4 text-xl md:text-2xl font-bold text-gray-600 whitespace-nowrap transition-colors" title="試題學習解析">
-                                <i class="fas fa-book w-10 text-center text-2xl md:text-3xl shrink-0"></i><span class="sidebar-text ml-2">試題學習解析</span>
+                            <button onclick="switchTab('learn')" id="nav-learn" class="nav-item active w-full flex items-center px-8 py-5 text-xl md:text-2xl font-bold text-gray-600 whitespace-nowrap transition-colors">
+                                <i class="fas fa-book w-10 text-center text-2xl md:text-3xl"></i><span>試題學習解析</span>
                             </button>
-                            <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-item w-full flex items-center px-8 md:px-6 py-5 md:py-4 text-xl md:text-2xl font-bold text-gray-600 whitespace-nowrap transition-colors" title="未完成試卷 / 測驗">
-                                <i class="fas fa-pen-alt w-10 text-center text-2xl md:text-3xl shrink-0"></i><span class="sidebar-text ml-2">未完成試卷 / 測驗</span>
+                            <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-item w-full flex items-center px-8 py-5 text-xl md:text-2xl font-bold text-gray-600 whitespace-nowrap transition-colors">
+                                <i class="fas fa-pen-alt w-10 text-center text-2xl md:text-3xl"></i><span>未完成試卷 / 測驗</span>
                             </button>
-                            <button onclick="switchTab('mistakes')" id="nav-mistakes" class="nav-item w-full flex items-center px-8 md:px-6 py-5 md:py-4 text-xl md:text-2xl font-bold text-gray-600 whitespace-nowrap transition-colors" title="錯題本複習">
-                                <i class="fas fa-times-circle w-10 text-center text-2xl md:text-3xl shrink-0"></i><span class="sidebar-text ml-2">錯題本複習</span>
+                            <button onclick="switchTab('mistakes')" id="nav-mistakes" class="nav-item w-full flex items-center px-8 py-5 text-xl md:text-2xl font-bold text-gray-600 whitespace-nowrap transition-colors">
+                                <i class="fas fa-times-circle w-10 text-center text-2xl md:text-3xl"></i><span>錯題本複習</span>
                             </button>
-                            <button onclick="switchTab('history')" id="nav-history" class="nav-item w-full flex items-center px-8 md:px-6 py-5 md:py-4 text-xl md:text-2xl font-bold text-gray-600 whitespace-nowrap transition-colors" title="歷史紀錄">
-                                <i class="fas fa-history w-10 text-center text-2xl md:text-3xl shrink-0"></i><span class="sidebar-text ml-2">歷史紀錄</span>
-                            </button>
-                            <div class="h-px bg-gray-100 my-2 mx-4 hidden md:block sidebar-text"></div>
-                            <button onclick="showDashboardModal()" class="nav-item w-full hidden md:flex items-center px-8 md:px-6 py-5 md:py-4 text-xl md:text-2xl font-bold text-gray-600 whitespace-nowrap transition-colors" title="題庫收錄狀態">
-                                <i class="fas fa-chart-pie w-10 text-center text-2xl md:text-3xl shrink-0 text-indigo-400"></i><span class="sidebar-text ml-2">題庫收錄狀態</span>
+                            <button onclick="switchTab('history')" id="nav-history" class="nav-item w-full flex items-center px-8 py-5 text-xl md:text-2xl font-bold text-gray-600 whitespace-nowrap transition-colors">
+                                <i class="fas fa-history w-10 text-center text-2xl md:text-3xl"></i><span>歷史紀錄</span>
                             </button>
                         </nav>
 
                         <div class="p-6 border-t border-gray-100 space-y-4 shrink-0 hidden md:block">
-                            <button onclick="window.open('migration_tool.html', '_blank')" class="w-full flex items-center justify-center bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-bold py-4 rounded-xl transition-colors text-xl border border-indigo-200 shadow-sm" title="題庫管理系統">
-                                <i class="fas fa-database shrink-0 text-2xl"></i><span class="sidebar-text ml-3 flex-1 text-left">題庫管理</span>
+                            <button onclick="window.open('migration_tool.html', '_blank')" class="w-full flex items-center justify-center bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-bold py-4 rounded-xl transition-colors text-xl border border-indigo-200 shadow-sm">
+                                <i class="fas fa-database mr-3"></i>題庫管理系統
                             </button>
-                            <button onclick="forceRefreshData()" class="w-full flex items-center justify-center bg-amber-400 hover:bg-amber-500 text-white font-bold py-4 rounded-xl transition-colors text-xl shadow-sm" title="系統重新整理">
-                                <i class="fas fa-sync-alt shrink-0 text-2xl"></i><span class="sidebar-text ml-3 flex-1 text-left">重新整理</span>
+                            <button onclick="forceRefreshData()" class="w-full bg-amber-400 hover:bg-amber-500 text-white font-bold py-4 rounded-xl transition-colors text-xl shadow-sm">
+                                系統重新整理
                             </button>
-                            <button onclick="logout()" class="w-full flex items-center justify-center bg-sky-400 hover:bg-sky-500 text-white font-bold py-4 rounded-xl transition-colors text-xl shadow-sm" title="系統登出">
-                                <i class="fas fa-sign-out-alt shrink-0 text-2xl"></i><span class="sidebar-text ml-3 flex-1 text-left">系統登出</span>
+                            <button onclick="logout()" class="w-full bg-sky-400 hover:bg-sky-500 text-white font-bold py-4 rounded-xl transition-colors text-xl shadow-sm">
+                                系統登出
                             </button>
                         </div>
                     </aside>
@@ -343,64 +332,6 @@
                 </div>
             `;
             switchTab('learn');
-        };
-
-        let isSidebarCollapsed = false;
-        window.toggleSidebar = () => {
-            isSidebarCollapsed = !isSidebarCollapsed;
-            const sidebar = document.getElementById('app-sidebar');
-            const toggleIcon = document.getElementById('sidebar-toggle-icon');
-            const texts = document.querySelectorAll('.sidebar-text');
-            const profileArea = document.getElementById('sidebar-profile');
-            const miniLogo = document.getElementById('sidebar-mini-logo');
-
-            if (isSidebarCollapsed) {
-                sidebar.classList.remove('md:w-80');
-                sidebar.classList.add('md:w-24');
-                texts.forEach(t => t.classList.add('hidden'));
-                profileArea.classList.add('hidden');
-                miniLogo.classList.remove('hidden');
-                toggleIcon.classList.remove('fa-chevron-left');
-                toggleIcon.classList.add('fa-chevron-right');
-            } else {
-                sidebar.classList.remove('md:w-24');
-                sidebar.classList.add('md:w-80');
-                texts.forEach(t => t.classList.remove('hidden'));
-                profileArea.classList.remove('hidden');
-                miniLogo.classList.add('hidden');
-                toggleIcon.classList.remove('fa-chevron-right');
-                toggleIcon.classList.add('fa-chevron-left');
-            }
-        };
-
-        window.showDashboardModal = () => {
-            const counts = {};
-            SUBJECTS.forEach(s => counts[s] = 0);
-            allQuestions.forEach(q => { if (counts[q.subject] !== undefined) counts[q.subject]++; });
-            
-            const overlay = document.createElement('div');
-            overlay.className = 'fixed inset-0 bg-black/40 z-[110] flex items-center justify-center p-4 backdrop-blur-sm animate-fade-in';
-            overlay.innerHTML = `
-                <div class="bg-white rounded-3xl p-6 md:p-10 max-w-4xl w-full shadow-2xl relative">
-                    <button id="btn-close-dash" class="absolute top-6 right-6 text-gray-400 hover:text-red-500 text-4xl transition-colors"><i class="fas fa-times"></i></button>
-                    <h3 class="text-3xl md:text-4xl font-bold text-gray-700 mb-10 flex items-center"><i class="fas fa-server mr-4 text-indigo-400"></i>各科題庫收錄狀態</h3>
-                    <div class="flex flex-wrap gap-4 md:gap-6">
-                        ${SUBJECTS.filter(s => s !== "全部").map(s => {
-                            const count = counts[s] || 0;
-                            const isAvail = count > 0;
-                            return `
-                                <div class="flex items-center px-5 py-4 rounded-2xl border w-[calc(50%-0.5rem)] md:w-[calc(33.333%-1rem)] ${isAvail ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}">
-                                    <div class="w-4 h-4 rounded-full mr-4 shrink-0 ${isAvail ? 'bg-green-500 animate-pulse' : 'bg-gray-300'}"></div>
-                                    <span class="text-xl md:text-2xl font-bold flex-1 ${isAvail ? 'text-green-700' : 'text-gray-500'}">${s}</span>
-                                    <span class="text-xl md:text-2xl font-black ${isAvail ? 'text-green-600' : 'text-gray-400'}">${count} 題</span>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(overlay);
-            document.getElementById('btn-close-dash').onclick = () => document.body.removeChild(overlay);
         };
 
         window.forceRefreshData = () => {
@@ -441,22 +372,22 @@
 
         const renderFilterBar = (onFilterChange) => {
             return `
-                <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-200 mb-10 flex flex-wrap gap-6 items-center">
-                    <div class="flex items-center gap-3 w-full md:w-auto flex-1">
-                        <span class="font-bold text-gray-600 text-2xl whitespace-nowrap"><i class="fas fa-book-open mr-2 text-gray-400"></i>科目：</span>
-                        <select id="filter-subject" class="flex-1 bg-gray-50 border border-gray-200 text-gray-700 text-2xl rounded-2xl focus:ring-amber-500 focus:border-amber-500 block p-4 font-bold" onchange="${onFilterChange}">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200 mb-8 flex flex-wrap gap-6 items-center">
+                    <div class="flex items-center gap-3 w-full md:w-auto">
+                        <span class="font-bold text-gray-600 text-xl md:text-2xl whitespace-nowrap"><i class="fas fa-book-open mr-2 text-gray-400"></i>科目：</span>
+                        <select id="filter-subject" class="flex-1 bg-gray-50 border border-gray-200 text-gray-700 text-xl md:text-2xl rounded-xl focus:ring-amber-500 focus:border-amber-500 block p-3 font-bold" onchange="${onFilterChange}">
                             ${SUBJECTS.map(s => `<option value="${s}" ${currentFilter.subject === s ? 'selected' : ''}>${s}</option>`).join('')}
                         </select>
                     </div>
-                    <div class="flex items-center gap-3 w-full md:w-auto flex-1">
-                        <span class="font-bold text-gray-600 text-2xl whitespace-nowrap"><i class="fas fa-filter mr-2 text-gray-400"></i>題庫：</span>
-                        <select id="filter-bank" class="flex-1 bg-gray-50 border border-gray-200 text-gray-700 text-2xl rounded-2xl focus:ring-amber-500 focus:border-amber-500 block p-4 font-bold" onchange="${onFilterChange}">
+                    <div class="flex items-center gap-3 w-full md:w-auto">
+                        <span class="font-bold text-gray-600 text-xl md:text-2xl whitespace-nowrap"><i class="fas fa-filter mr-2 text-gray-400"></i>題庫：</span>
+                        <select id="filter-bank" class="flex-1 bg-gray-50 border border-gray-200 text-gray-700 text-xl md:text-2xl rounded-xl focus:ring-amber-500 focus:border-amber-500 block p-3 font-bold" onchange="${onFilterChange}">
                             ${BANKS.map(b => `<option value="${b}" ${currentFilter.bank === b ? 'selected' : ''}>${b}</option>`).join('')}
                         </select>
                     </div>
-                    <div class="flex items-center gap-3 w-full md:w-auto flex-1">
-                        <span class="font-bold text-gray-600 text-2xl whitespace-nowrap"><i class="fas fa-layer-group mr-2 text-gray-400"></i>冊別：</span>
-                        <select id="filter-volume" class="flex-1 bg-gray-50 border border-gray-200 text-gray-700 text-2xl rounded-2xl focus:ring-amber-500 focus:border-amber-500 block p-4 font-bold" onchange="${onFilterChange}">
+                    <div class="flex items-center gap-3 w-full md:w-auto">
+                        <span class="font-bold text-gray-600 text-xl md:text-2xl whitespace-nowrap"><i class="fas fa-layer-group mr-2 text-gray-400"></i>冊別：</span>
+                        <select id="filter-volume" class="flex-1 bg-gray-50 border border-gray-200 text-gray-700 text-xl md:text-2xl rounded-xl focus:ring-amber-500 focus:border-amber-500 block p-3 font-bold" onchange="${onFilterChange}">
                             ${VOLUMES.map(v => `<option value="${v}" ${currentFilter.volume === v ? 'selected' : ''}>${v}</option>`).join('')}
                         </select>
                     </div>
@@ -481,79 +412,102 @@
         const renderLearnView = (container) => {
             let filtered = getFilteredQuestions();
             
+            // Generate DB Dashboard stats
+            const counts = {};
+            SUBJECTS.forEach(s => counts[s] = 0);
+            allQuestions.forEach(q => { if (counts[q.subject] !== undefined) counts[q.subject]++; });
+            
+            let dashboardHtml = `
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200 mb-8">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-500 mb-6 flex items-center"><i class="fas fa-server mr-3 text-indigo-400 text-2xl"></i>各科題庫收錄狀態</h3>
+                    <div class="flex flex-wrap gap-4 md:gap-6">
+                        ${SUBJECTS.filter(s => s !== "全部").map(s => {
+                            const count = counts[s] || 0;
+                            const isAvail = count > 0;
+                            return `
+                                <div class="flex items-center px-5 py-3 rounded-xl border ${isAvail ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}">
+                                    <div class="w-4 h-4 rounded-full mr-3 ${isAvail ? 'bg-green-500 animate-pulse' : 'bg-gray-300'}"></div>
+                                    <span class="text-xl md:text-2xl font-bold ${isAvail ? 'text-green-700' : 'text-gray-500'}">${s}</span>
+                                    <span class="ml-4 text-lg md:text-xl font-black ${isAvail ? 'text-green-600 bg-green-200' : 'text-gray-400 bg-gray-200'} px-3 py-1 rounded-full">${count} 題</span>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+
             let html = `
                 <div class="w-full h-full p-4 md:p-8 overflow-y-auto">
-                    <div class="max-w-6xl mx-auto">
-                        <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
-                            <h2 class="text-3xl md:text-5xl font-black text-gray-800"><i class="fas fa-book text-amber-500 mr-3"></i>試題學習與解析</h2>
-                            <div class="flex items-center gap-3">
-                                <button onclick="showDashboardModal()" class="md:hidden bg-indigo-100 text-indigo-700 font-bold px-4 py-2 rounded-xl text-lg border border-indigo-200 shadow-sm"><i class="fas fa-chart-pie mr-2"></i>題庫狀態</button>
-                                <span class="bg-indigo-100 text-indigo-800 font-bold px-5 py-2.5 rounded-full text-lg md:text-2xl border border-indigo-200 shadow-sm">過濾結果：${filtered.length} 題</span>
-                            </div>
+                    <div class="max-w-5xl mx-auto">
+                        <div class="flex justify-between items-center mb-8">
+                            <h2 class="text-3xl md:text-4xl font-black text-gray-800"><i class="fas fa-book text-amber-500 mr-3"></i>試題學習與解析</h2>
+                            <span class="bg-indigo-100 text-indigo-800 font-bold px-5 py-2 rounded-full text-lg md:text-xl border border-indigo-200 shadow-sm">過濾結果：${filtered.length} 題</span>
                         </div>
+                        ${dashboardHtml}
                         ${renderFilterBar('updateFiltersAndRenderLearn()')}
             `;
 
             if (filtered.length === 0) {
                 html += `
-                    <div class="bg-white p-12 md:p-20 rounded-3xl shadow-sm border border-gray-200 text-center text-gray-500 mt-10 flex flex-col items-center">
-                        <div class="text-8xl mb-8 opacity-50"><i class="fas fa-box-open"></i></div>
-                        <p class="text-3xl md:text-4xl font-bold">此範圍目前沒有試題</p>
-                        <p class="mt-6 text-2xl md:text-3xl text-gray-400">請嘗試切換上方的過濾條件，或前往「題庫管理系統」新增題目。</p>
+                    <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-200 text-center text-gray-500 mt-8 flex flex-col items-center">
+                        <div class="text-7xl mb-6 opacity-50"><i class="fas fa-box-open"></i></div>
+                        <p class="text-2xl md:text-3xl font-bold">此範圍目前沒有試題</p>
+                        <p class="mt-4 text-xl md:text-2xl text-gray-400">請嘗試切換上方的過濾條件，或前往「題庫管理系統」新增題目。</p>
                     </div></div></div>`;
                 container.innerHTML = html;
                 return;
             }
 
-            html += `<div class="space-y-12 pb-24">`;
+            html += `<div class="space-y-10 pb-20">`;
             filtered.forEach((q, idx) => {
                 const formatText = (txt) => txt ? txt.replace(/\n/g, '<br>') : '無';
                 
+                // 解析圖片 URL 邏輯
                 let imgHtml = '';
                 if (q.image) {
                     const imgSrc = (q.image.startsWith('http://') || q.image.startsWith('https://')) ? q.image : `./images/${q.image}`;
-                    imgHtml = `<div class="w-full my-8 flex justify-center bg-gray-50 rounded-2xl border border-gray-200 p-6"><img src="${imgSrc}" alt="題目附圖" class="max-w-full max-h-[600px] object-contain rounded-lg shadow-sm" onerror="this.onerror=null;this.src='https://placehold.co/600x400/eee/999?text=Image+Not+Found';"></div>`;
+                    imgHtml = `<div class="w-full my-6 flex justify-center bg-gray-50 rounded-xl border border-gray-100 p-4"><img src="${imgSrc}" alt="題目附圖" class="max-w-full max-h-[500px] object-contain rounded shadow-sm" onerror="this.onerror=null;this.src='https://placehold.co/600x400/eee/999?text=Image+Not+Found';"></div>`;
                 }
 
                 let optionsHtml = '';
                 if(q.options && Array.isArray(q.options)) {
                     q.options.forEach((opt, i) => {
                         const isAns = i === q.answer;
-                        const optClass = isAns ? 'bg-green-50 border-green-300 text-green-900 shadow-sm' : 'bg-gray-50 border-gray-200 text-gray-700';
-                        const iconHtml = isAns ? '<div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center mr-4 shrink-0 font-bold text-xl"><i class="fas fa-check"></i></div>' : `<div class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center mr-4 shrink-0 font-bold text-xl">${String.fromCharCode(65+i)}</div>`;
+                        const optClass = isAns ? 'bg-green-50 border-green-200 text-green-800 shadow-sm' : 'bg-gray-50 border-gray-100 text-gray-600';
+                        const iconHtml = isAns ? '<i class="fas fa-check text-green-600 mr-4 text-3xl"></i>' : `<span class="mr-4 font-bold text-3xl">${String.fromCharCode(65+i)}.</span>`;
                         
                         optionsHtml += `
-                            <div class="p-6 md:p-8 rounded-3xl border-2 ${optClass} flex flex-col mb-5">
+                            <div class="p-5 md:p-6 rounded-2xl border-2 ${optClass} flex flex-col mb-4">
                                 <div class="flex items-start text-2xl md:text-3xl">
                                     ${iconHtml}
-                                    <span class="font-medium leading-relaxed mt-1">${opt}</span>
+                                    <span class="font-medium leading-relaxed">${opt}</span>
                                 </div>
-                                ${q.optionExplanations && q.optionExplanations[i] ? `<div class="mt-6 text-xl md:text-2xl pl-14 text-gray-600 break-words"><span class="font-black text-gray-800">解析：</span>${q.optionExplanations[i]}</div>` : ''}
+                                ${q.optionExplanations && q.optionExplanations[i] ? `<div class="mt-5 text-xl md:text-2xl pl-12 text-gray-500 break-words"><span class="font-bold text-gray-600">解析：</span>${q.optionExplanations[i]}</div>` : ''}
                             </div>
                         `;
                     });
                 }
 
                 html += `
-                    <div class="content-card p-8 md:p-14 relative">
-                        <div class="flex flex-wrap items-center gap-4 mb-10 border-b border-gray-100 pb-8">
-                            <span class="text-2xl md:text-3xl font-black px-5 py-2 rounded-lg bg-indigo-100 text-indigo-800">${q.subject || '未分類'}</span>
-                            <span class="text-xl md:text-2xl font-bold px-5 py-2 rounded-lg tag-bank">${q.bank || '未分類'}</span>
-                            <span class="text-xl md:text-2xl font-bold px-5 py-2 rounded-lg tag-vol">${q.volume || '未分類'}</span>
-                            <span class="text-2xl md:text-3xl font-black text-gray-400 border-2 border-gray-200 px-5 py-2 rounded-lg ml-auto">#${q.number || (idx+1)}</span>
+                    <div class="content-card p-8 md:p-12 relative">
+                        <div class="flex flex-wrap items-center gap-3 mb-8 border-b border-gray-100 pb-6">
+                            <span class="text-xl md:text-2xl font-bold px-4 py-1.5 rounded bg-indigo-100 text-indigo-700">${q.subject || '未分類'}</span>
+                            <span class="text-xl md:text-2xl font-bold px-4 py-1.5 rounded tag-bank">${q.bank || '未分類'}</span>
+                            <span class="text-xl md:text-2xl font-bold px-4 py-1.5 rounded tag-vol">${q.volume || '未分類'}</span>
+                            <span class="text-xl md:text-2xl font-bold text-gray-400 border border-gray-200 px-4 py-1.5 rounded ml-auto">#${q.number || (idx+1)}</span>
                         </div>
                         
-                        <div class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 leading-relaxed whitespace-pre-wrap">${formatText(q.questionText)}</div>
+                        <div class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 leading-relaxed whitespace-pre-wrap">${formatText(q.questionText)}</div>
                         ${imgHtml}
                         
-                        <div class="mb-10">
+                        <div class="mb-8">
                             ${optionsHtml}
                         </div>
                         
                         ${q.analysis ? `
-                        <div class="bg-amber-50/80 border-2 border-amber-200 rounded-3xl p-8 md:p-10 mt-10">
-                            <h4 class="font-black text-3xl md:text-4xl text-amber-800 mb-6 flex items-center"><i class="fas fa-lightbulb text-amber-500 mr-4 text-4xl"></i>題幹分析與解題方向</h4>
-                            <div class="text-gray-800 text-2xl md:text-3xl leading-relaxed whitespace-pre-wrap">${formatText(q.analysis)}</div>
+                        <div class="bg-amber-50/60 border-2 border-amber-100 rounded-2xl p-6 md:p-8 mt-8">
+                            <h4 class="font-bold text-2xl md:text-3xl text-amber-800 mb-4 flex items-center"><i class="fas fa-lightbulb text-amber-500 mr-3 text-3xl"></i>題幹分析與解題方向</h4>
+                            <div class="text-gray-700 text-xl md:text-2xl leading-relaxed whitespace-pre-wrap">${formatText(q.analysis)}</div>
                         </div>
                         ` : ''}
                     </div>
@@ -569,22 +523,22 @@
                 
                 let html = `
                     <div class="w-full h-full p-4 md:p-8 overflow-y-auto">
-                        <div class="max-w-6xl mx-auto text-center mt-12">
-                            <div class="w-40 h-40 bg-amber-50 rounded-full mx-auto mb-10 flex items-center justify-center shadow-inner border border-amber-100">
-                                <span class="text-8xl text-amber-500"><i class="fas fa-pen-fancy"></i></span>
+                        <div class="max-w-5xl mx-auto text-center mt-12">
+                            <div class="w-32 h-32 bg-amber-50 rounded-full mx-auto mb-8 flex items-center justify-center shadow-inner border border-amber-100">
+                                <span class="text-7xl text-amber-500"><i class="fas fa-pen-fancy"></i></span>
                             </div>
-                            <h2 class="text-5xl md:text-6xl font-extrabold mb-8 text-gray-800">準備好開始挑戰了嗎？</h2>
-                            <p class="text-gray-500 mb-12 text-2xl md:text-3xl font-medium leading-relaxed">
+                            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-gray-800">準備好開始挑戰了嗎？</h2>
+                            <p class="text-gray-500 mb-10 text-xl md:text-2xl font-medium leading-relaxed">
                                 系統將根據您設定的範圍，生成測驗卷。<br>作答完畢後可立即對照詳細解析！
                             </p>
                             
-                            <div class="text-left mb-12">
+                            <div class="text-left mb-10">
                                 ${renderFilterBar('updateFiltersAndRenderQuiz()')}
                             </div>
                             
-                            <div class="bg-white p-12 md:p-16 rounded-3xl shadow-sm border border-gray-200 mb-12">
-                                <h3 class="text-4xl font-bold text-gray-700 mb-8">本次測驗將產生 <span class="text-blue-600 text-6xl mx-4 font-black">${filtered.length}</span> 題</h3>
-                                <button onclick="startQuiz()" ${filtered.length === 0 ? 'disabled' : ''} class="${filtered.length === 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600 shadow-lg hover:-translate-y-1'} w-full md:w-auto text-white font-black py-6 px-20 text-3xl md:text-4xl rounded-full transition-all border-b-8 ${filtered.length === 0 ? 'border-gray-400' : 'border-blue-700'}">
+                            <div class="bg-white p-10 md:p-12 rounded-3xl shadow-sm border border-gray-200 mb-10">
+                                <h3 class="text-3xl font-bold text-gray-700 mb-6">本次測驗將產生 <span class="text-blue-600 text-5xl mx-3 font-black">${filtered.length}</span> 題</h3>
+                                <button onclick="startQuiz()" ${filtered.length === 0 ? 'disabled' : ''} class="${filtered.length === 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600 shadow-lg hover:-translate-y-1'} w-full md:w-auto text-white font-black py-5 px-16 text-2xl md:text-3xl rounded-full transition-all border-b-8 ${filtered.length === 0 ? 'border-gray-400' : 'border-blue-700'}">
                                     ${filtered.length === 0 ? '範圍內無題目' : '立即開始測驗 🚀'}
                                 </button>
                             </div>
@@ -613,19 +567,20 @@
             const q = quizState.questions[qIdx];
             const formatText = (txt) => txt ? txt.replace(/\n/g, '<br>') : '無';
             
+            // 解析圖片 URL 邏輯
             let imgHtml = '';
             if (q.image) {
                 const imgSrc = (q.image.startsWith('http://') || q.image.startsWith('https://')) ? q.image : `./images/${q.image}`;
-                imgHtml = `<div class="w-full my-8 flex justify-center bg-gray-50 rounded-2xl border border-gray-200 p-6"><img src="${imgSrc}" alt="題目附圖" class="max-w-full max-h-[600px] object-contain rounded-lg shadow-sm" onerror="this.onerror=null;this.src='https://placehold.co/600x400/eee/999?text=Image+Not+Found';"></div>`;
+                imgHtml = `<div class="w-full my-6 flex justify-center bg-gray-50 rounded-xl border border-gray-100 p-4"><img src="${imgSrc}" alt="題目附圖" class="max-w-full max-h-[500px] object-contain rounded shadow-sm" onerror="this.onerror=null;this.src='https://placehold.co/600x400/eee/999?text=Image+Not+Found';"></div>`;
             }
 
             let optionsHtml = '';
             if(q.options && Array.isArray(q.options)) {
                 q.options.forEach((opt, i) => {
-                    let btnClass = "w-full text-left p-6 md:p-8 rounded-3xl border-2 transition-all duration-200 flex flex-col items-start mt-5 group ";
+                    let btnClass = "w-full text-left p-5 md:p-6 rounded-2xl border-2 transition-all duration-200 flex flex-col items-start mt-4 group ";
                     let iconClass = "w-12 h-12 rounded-full flex items-center justify-center mr-5 font-black text-2xl shrink-0 ";
                     let iconText = String.fromCharCode(65+i);
-                    let expClass = "mt-6 text-2xl md:text-3xl p-6 rounded-2xl w-full font-medium transition-all duration-300 break-words ";
+                    let expClass = "mt-5 text-xl md:text-2xl p-5 rounded-xl w-full font-medium transition-all duration-300 break-words ";
                     let expText = (q.optionExplanations && q.optionExplanations[i]) ? q.optionExplanations[i] : '無解析';
                     
                     if (!q.showExplanation) {
@@ -653,35 +608,35 @@
 
                     optionsHtml += `
                         <button id="opt-btn-${qIdx}-${i}" ${q.showExplanation ? 'disabled' : ''} onclick="answerQuestion(${qIdx}, ${i})" class="${btnClass}">
-                            <div class="flex items-start w-full text-3xl md:text-4xl">
+                            <div class="flex items-start w-full text-2xl md:text-3xl">
                                 <span id="opt-icon-${qIdx}-${i}" class="${iconClass}">${iconText}</span>
                                 <span class="flex-1 leading-relaxed font-bold mt-1.5">${opt}</span>
                             </div>
-                            <div id="opt-exp-${qIdx}-${i}" class="${expClass}"><span class="font-black text-3xl mr-3 text-gray-700">解析：</span>${expText}</div>
+                            <div id="opt-exp-${qIdx}-${i}" class="${expClass}"><span class="font-bold text-2xl mr-2 text-gray-700">解析：</span>${expText}</div>
                         </button>
                     `;
                 });
             }
 
             return `
-                <div class="content-card p-10 md:p-14 mb-12 shadow-sm" id="q-block-${qIdx}">
-                    <div class="flex flex-wrap items-center gap-5 mb-10 border-b border-gray-100 pb-8">
-                        <span class="bg-gray-200 text-gray-700 font-black px-6 py-2.5 rounded-full text-2xl md:text-3xl">Q${qIdx + 1}</span>
-                        <span class="text-xl md:text-2xl font-black bg-indigo-50 text-indigo-700 border border-indigo-100 px-5 py-2.5 rounded-lg">${q.subject || '未分類'}</span>
-                        <span class="text-xl md:text-2xl text-gray-500 border-2 border-gray-200 px-5 py-2.5 rounded-lg font-bold">${q.bank} | ${q.volume}</span>
+                <div class="content-card p-8 md:p-12 mb-10 shadow-sm" id="q-block-${qIdx}">
+                    <div class="flex flex-wrap items-center gap-4 mb-8 border-b border-gray-100 pb-6">
+                        <span class="bg-gray-200 text-gray-600 font-black px-5 py-2 rounded-full text-xl md:text-2xl">Q${qIdx + 1}</span>
+                        <span class="text-lg md:text-xl font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-4 py-1.5 rounded">${q.subject || '未分類'}</span>
+                        <span class="text-lg md:text-xl text-gray-500 border border-gray-200 px-4 py-1.5 rounded font-bold">${q.bank} | ${q.volume}</span>
                     </div>
                     
-                    <div class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 leading-relaxed whitespace-pre-wrap">${formatText(q.questionText)}</div>
+                    <div class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 leading-relaxed whitespace-pre-wrap">${formatText(q.questionText)}</div>
                     ${imgHtml}
                     
-                    <div class="w-full space-y-5">
+                    <div class="w-full space-y-4">
                         ${optionsHtml}
                     </div>
                     
                     ${q.showExplanation && q.analysis ? `
-                    <div class="bg-amber-50/80 border-2 border-amber-200 rounded-3xl p-10 mt-12 animate-fade-in shadow-sm">
-                        <h4 class="font-black text-3xl md:text-4xl text-amber-800 mb-6 flex items-center"><i class="fas fa-lightbulb text-amber-500 mr-4 text-5xl"></i>題幹分析與解題思考</h4>
-                        <div class="text-gray-800 text-2xl md:text-3xl leading-relaxed whitespace-pre-wrap">${formatText(q.analysis)}</div>
+                    <div class="bg-amber-50/80 border-2 border-amber-200 rounded-2xl p-8 mt-10 animate-fade-in shadow-sm">
+                        <h4 class="font-bold text-2xl md:text-3xl text-amber-800 mb-4 flex items-center"><i class="fas fa-lightbulb text-amber-500 mr-4 text-4xl"></i>題幹分析與解題思考</h4>
+                        <div class="text-gray-700 text-xl md:text-2xl leading-relaxed whitespace-pre-wrap">${formatText(q.analysis)}</div>
                     </div>
                     ` : ''}
                 </div>
@@ -717,21 +672,21 @@
                         </div>
                     </div>`
                 : ` <div class="flex justify-between items-center mb-8 bg-white p-6 rounded-2xl shadow-sm border border-gray-200 sticky top-0 z-10">
-                        <div class="font-bold text-xl md:text-2xl text-gray-700 flex items-center"><span class="text-3xl mr-3 text-amber-500">📝</span>作答進度：<span id="quiz-progress-answered" class="text-amber-600 text-3xl mx-2 font-black">${answered}</span> / <span class="text-2xl mx-1">${total}</span> 題</div>
+                        <div class="font-bold text-xl md:text-2xl text-gray-700 flex items-center"><span class="text-3xl mr-3 text-amber-500">📝</span>作答進度：<span class="text-amber-600 text-3xl mx-2 font-black">${answered}</span> / <span class="text-2xl mx-1">${total}</span> 題</div>
                         <button onclick="customConfirm('確定放棄目前的作答進度嗎？', () => clearQuizHistory())" class="text-lg md:text-xl text-gray-500 hover:text-red-500 bg-gray-50 hover:bg-red-50 px-5 py-3 rounded-xl font-bold transition-colors border border-gray-200 hover:border-red-200 shadow-sm flex items-center"><i class="fas fa-door-open mr-2 text-2xl"></i>放棄作答</button>
                     </div>`;
 
             let html = `
                 <div class="w-full h-full p-4 md:p-8 overflow-y-auto bg-[#f5f6fa]" id="quiz-scroll-container">
-                    <div class="max-w-6xl mx-auto relative pb-28">
+                    <div class="max-w-5xl mx-auto relative pb-24">
                         ${headerHtml}
             `;
             
-            quizState.questions.forEach((_, qIdx) => { html += `<div id="q-block-${qIdx}">${generateQuizQuestionHtml(qIdx)}</div>`; });
+            quizState.questions.forEach((_, qIdx) => { html += generateQuizQuestionHtml(qIdx); });
             
             if (!isFinished) {
                 html += `
-                        <button onclick="finishQuizWaterfall()" class="w-full mt-14 bg-gray-800 hover:bg-gray-900 text-white font-black py-8 text-3xl md:text-4xl rounded-[2rem] shadow-xl transition-all hover:-translate-y-1 transform border-b-8 border-gray-950">
+                        <button onclick="finishQuizWaterfall()" class="w-full mt-12 bg-gray-800 hover:bg-gray-900 text-white font-black py-6 text-2xl md:text-3xl rounded-3xl shadow-lg transition-all hover:-translate-y-1 transform border-b-8 border-gray-950">
                             交卷結算 📊
                         </button>`;
             }
@@ -767,13 +722,8 @@
                 block.parentNode.replaceChild(tempDiv.firstElementChild, block);
             }
             
-            // Update sticky header progress WITHOUT re-rendering full view (prevents scroll reset)
-            const answeredEl = document.getElementById('quiz-progress-answered');
-            if(answeredEl) {
-                let currentAnswered = 0;
-                quizState.questions.forEach(q => { if (q.showExplanation && q.selectedAns !== -1) currentAnswered++; });
-                answeredEl.innerText = currentAnswered;
-            }
+            // Re-render full view to update sticky header progress
+            renderQuizView(el('main-content'));
         };
 
         window.finishQuizWaterfall = () => {
@@ -828,13 +778,13 @@
             if(!userData.mistakes || userData.mistakes.length === 0) {
                 let html = `
                     <div class="w-full h-full p-4 md:p-8 overflow-y-auto">
-                        <div class="max-w-6xl mx-auto mb-10 flex justify-between items-end border-b-4 border-rose-200 pb-6 px-2 mt-6">
+                        <div class="max-w-5xl mx-auto mb-8 flex justify-between items-end border-b-4 border-rose-200 pb-6 px-2 mt-6">
                             <h2 class="text-4xl md:text-5xl font-extrabold text-rose-700">🩹 錯題本</h2>
                         </div>
-                        <div class="bg-white p-16 rounded-3xl shadow-sm border border-gray-200 text-center text-gray-500 mt-10 flex flex-col items-center">
-                            <div class="text-8xl mb-8 opacity-50"><i class="fas fa-glass-cheers"></i></div>
-                            <p class="text-4xl font-bold mb-4">目前沒有錯題紀錄 🎉</p>
-                            <p class="text-2xl md:text-3xl">太棒了！繼續保持！</p>
+                        <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-200 text-center text-gray-500 mt-8 flex flex-col items-center">
+                            <div class="text-7xl mb-6 opacity-50"><i class="fas fa-glass-cheers"></i></div>
+                            <p class="text-3xl font-bold mb-3">目前沒有錯題紀錄 🎉</p>
+                            <p class="text-xl md:text-2xl">太棒了！繼續保持！</p>
                         </div>
                     </div>`;
                 container.innerHTML = html;
@@ -843,11 +793,11 @@
 
             let html = `
                 <div class="w-full h-full p-4 md:p-8 overflow-y-auto">
-                    <div class="max-w-6xl mx-auto mb-10 flex justify-between items-center border-b-4 border-rose-200 pb-6 px-2 mt-6">
+                    <div class="max-w-5xl mx-auto mb-8 flex justify-between items-center border-b-4 border-rose-200 pb-6 px-2 mt-6">
                         <h2 class="text-4xl md:text-5xl font-extrabold text-rose-700">🩹 錯題本</h2>
-                        <button onclick="customConfirm('確定要清空所有錯題紀錄嗎？此動作無法還原。', () => { userData.mistakes = []; saveUserDataToCloud(); renderMistakes(document.getElementById('main-content')); })" class="text-xl md:text-2xl text-rose-500 bg-white border-2 border-rose-200 hover:bg-rose-50 px-6 py-3 rounded-xl font-bold transition-colors shadow-sm">清空全部</button>
+                        <button onclick="customConfirm('確定要清空所有錯題紀錄嗎？此動作無法還原。', () => { userData.mistakes = []; saveUserDataToCloud(); renderMistakes(document.getElementById('main-content')); })" class="text-lg md:text-xl text-rose-500 bg-white border border-rose-200 hover:bg-rose-50 px-6 py-3 rounded-xl font-bold transition-colors shadow-sm">清空全部</button>
                     </div>
-                    <div class="max-w-6xl mx-auto space-y-12 pb-24">
+                    <div class="max-w-5xl mx-auto space-y-10 pb-20">
             `;
             
             // 反向顯示，最新的錯題在最上
@@ -856,53 +806,54 @@
             reversedMistakes.forEach((q, idx) => {
                 const formatText = (txt) => txt ? txt.replace(/\n/g, '<br>') : '無';
                 
+                // 解析圖片 URL 邏輯
                 let imgHtml = '';
                 if (q.image) {
                     const imgSrc = (q.image.startsWith('http://') || q.image.startsWith('https://')) ? q.image : `./images/${q.image}`;
-                    imgHtml = `<div class="w-full my-8 flex justify-center bg-gray-50 rounded-2xl border border-gray-200 p-6"><img src="${imgSrc}" alt="題目附圖" class="max-w-full max-h-[600px] object-contain rounded-lg shadow-sm" onerror="this.onerror=null;this.src='https://placehold.co/600x400/eee/999?text=Image+Not+Found';"></div>`;
+                    imgHtml = `<div class="w-full my-6 flex justify-center bg-gray-50 rounded-xl border border-gray-100 p-4"><img src="${imgSrc}" alt="題目附圖" class="max-w-full max-h-[500px] object-contain rounded shadow-sm" onerror="this.onerror=null;this.src='https://placehold.co/600x400/eee/999?text=Image+Not+Found';"></div>`;
                 }
 
                 let optionsHtml = '';
                 if(q.options && Array.isArray(q.options)) {
                     q.options.forEach((opt, i) => {
                         const isAns = i === q.answer;
-                        const optClass = isAns ? 'bg-green-50 border-green-300 text-green-900' : 'bg-gray-50 border-gray-200 text-gray-700';
-                        const iconHtml = isAns ? '<div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center mr-4 shrink-0 font-bold text-xl"><i class="fas fa-check"></i></div>' : `<div class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center mr-4 shrink-0 font-bold text-xl">${String.fromCharCode(65+i)}</div>`;
+                        const optClass = isAns ? 'bg-green-50 border-green-200 text-green-800' : 'bg-gray-50 border-gray-100 text-gray-600';
+                        const iconHtml = isAns ? '<i class="fas fa-check text-green-600 mr-4 text-3xl"></i>' : `<span class="mr-4 font-bold text-3xl">${String.fromCharCode(65+i)}.</span>`;
                         
                         optionsHtml += `
-                            <div class="p-6 md:p-8 rounded-3xl border-2 ${optClass} flex flex-col mb-5">
+                            <div class="p-5 md:p-6 rounded-2xl border-2 ${optClass} flex flex-col mb-4">
                                 <div class="flex items-start text-2xl md:text-3xl">
                                     ${iconHtml}
-                                    <span class="font-medium leading-relaxed mt-1">${opt}</span>
+                                    <span class="font-medium leading-relaxed">${opt}</span>
                                 </div>
-                                ${q.optionExplanations && q.optionExplanations[i] ? `<div class="mt-6 text-xl md:text-2xl pl-14 text-gray-600 break-words"><span class="font-black text-gray-800">解析：</span>${q.optionExplanations[i]}</div>` : ''}
+                                ${q.optionExplanations && q.optionExplanations[i] ? `<div class="mt-5 text-xl md:text-2xl pl-12 text-gray-500 break-words"><span class="font-bold text-gray-600">解析：</span>${q.optionExplanations[i]}</div>` : ''}
                             </div>
                         `;
                     });
                 }
 
                 html += `
-                    <div class="content-card p-8 md:p-14 border-l-8 border-l-rose-400 relative">
-                        <div class="flex justify-between items-start mb-10">
-                            <div class="flex flex-wrap items-center gap-4">
-                                <span class="bg-rose-100 text-rose-700 font-black px-5 py-2.5 rounded-full text-xl md:text-2xl"><i class="fas fa-times-circle mr-2"></i>錯題</span>
-                                <span class="text-xl md:text-2xl font-black bg-indigo-50 text-indigo-700 border border-indigo-100 px-5 py-2.5 rounded-lg">${q.subject || '未分類'}</span>
-                                <span class="text-xl md:text-2xl text-gray-500 border-2 border-gray-200 px-5 py-2.5 rounded-lg font-bold">${q.bank} | ${q.volume}</span>
+                    <div class="content-card p-8 md:p-12 border-l-8 border-l-rose-400 relative">
+                        <div class="flex justify-between items-start mb-8">
+                            <div class="flex flex-wrap items-center gap-3">
+                                <span class="bg-rose-100 text-rose-700 font-black px-4 py-1.5 rounded-full text-lg md:text-xl"><i class="fas fa-times-circle mr-2"></i>錯題</span>
+                                <span class="text-lg md:text-xl font-bold bg-indigo-50 text-indigo-600 border border-indigo-100 px-4 py-1.5 rounded">${q.subject || '未分類'}</span>
+                                <span class="text-lg md:text-xl text-gray-500 border border-gray-200 px-4 py-1.5 rounded font-bold">${q.bank} | ${q.volume}</span>
                             </div>
-                            <button onclick="removeMistake('${q.id}')" class="text-gray-300 hover:text-red-500 text-4xl md:text-5xl transition-colors bg-white hover:bg-red-50 p-3 rounded-2xl" title="移出錯題本"><i class="fas fa-trash-alt"></i></button>
+                            <button onclick="removeMistake('${q.id}')" class="text-gray-300 hover:text-red-500 text-3xl md:text-4xl transition-colors bg-white hover:bg-red-50 p-2 rounded-lg" title="移出錯題本"><i class="fas fa-trash-alt"></i></button>
                         </div>
                         
-                        <div class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 leading-relaxed whitespace-pre-wrap">${formatText(q.questionText)}</div>
+                        <div class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 leading-relaxed whitespace-pre-wrap">${formatText(q.questionText)}</div>
                         ${imgHtml}
                         
-                        <div class="mb-10">
+                        <div class="mb-8">
                             ${optionsHtml}
                         </div>
                         
                         ${q.analysis ? `
-                        <div class="bg-amber-50/80 border-2 border-amber-200 rounded-3xl p-8 md:p-10 mt-10">
-                            <h4 class="font-black text-3xl md:text-4xl text-amber-800 mb-6 flex items-center"><i class="fas fa-lightbulb text-amber-500 mr-4 text-5xl"></i>題幹分析與解題方向</h4>
-                            <div class="text-gray-800 text-2xl md:text-3xl leading-relaxed whitespace-pre-wrap">${formatText(q.analysis)}</div>
+                        <div class="bg-amber-50/60 border-2 border-amber-100 rounded-2xl p-6 md:p-8 mt-8">
+                            <h4 class="font-bold text-2xl md:text-3xl text-amber-800 mb-4 flex items-center"><i class="fas fa-lightbulb text-amber-500 mr-3 text-3xl"></i>題幹分析與解題方向</h4>
+                            <div class="text-gray-700 text-xl md:text-2xl leading-relaxed whitespace-pre-wrap">${formatText(q.analysis)}</div>
                         </div>
                         ` : ''}
                     </div>
@@ -924,34 +875,34 @@
             
             let html = `
                 <div class="w-full h-full p-4 md:p-8 overflow-y-auto">
-                    <div class="max-w-6xl mx-auto mb-10 border-b-4 border-purple-200 pb-6 px-2 mt-6 flex justify-between items-center">
+                    <div class="max-w-5xl mx-auto mb-8 border-b-4 border-purple-200 pb-6 px-2 mt-6 flex justify-between items-center">
                         <h2 class="text-4xl md:text-5xl font-extrabold text-purple-700">📜 學習紀錄</h2>
                     </div>
             `;
             
             if (!hasQuiz) {
                 html += `
-                    <div class="bg-white p-16 rounded-3xl shadow-sm border border-gray-200 text-center text-gray-500 mt-10 flex flex-col items-center">
-                        <div class="text-8xl mb-8 opacity-50"><i class="fas fa-history"></i></div>
-                        <p class="text-4xl font-bold mb-4">尚無測驗紀錄</p>
-                        <p class="text-2xl md:text-3xl">去完成一次測驗來累積您的學習足跡吧！</p>
+                    <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-200 text-center text-gray-500 mt-8 flex flex-col items-center">
+                        <div class="text-7xl mb-6 opacity-50"><i class="fas fa-history"></i></div>
+                        <p class="text-3xl font-bold mb-3">尚無測驗紀錄</p>
+                        <p class="text-xl md:text-2xl">去完成一次測驗來累積您的學習足跡吧！</p>
                     </div></div>`;
                 container.innerHTML = html;
                 return;
             }
 
             html += `
-                <div class="max-w-6xl mx-auto">
-                    <div class="content-card p-10 md:p-14">
-                        <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 border-b-2 border-gray-100 pb-6 flex items-center"><i class="fas fa-chart-line text-blue-500 mr-5 text-4xl"></i>測驗成績歷史</h3>
-                        <div class="space-y-6">
+                <div class="max-w-5xl mx-auto">
+                    <div class="content-card p-8 md:p-12">
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 border-b-2 border-gray-100 pb-6 flex items-center"><i class="fas fa-chart-line text-blue-500 mr-4 text-3xl"></i>測驗成績歷史</h3>
+                        <div class="space-y-5">
                             ${(userData.quizHistory || []).slice().reverse().map(h => `
-                                <div class="bg-gray-50 p-6 md:p-8 rounded-3xl border-2 border-gray-100 flex justify-between items-center hover:bg-indigo-50 hover:border-indigo-200 transition-colors">
-                                    <div class="text-xl md:text-2xl">
-                                        <div class="font-black text-gray-700 mb-3 text-2xl md:text-3xl">${h.date}</div>
-                                        <div class="text-gray-500 font-bold">範圍：<span class="text-indigo-600">${h.subject || '全部'}</span> | <span class="text-amber-600">${h.bank || '全部'}</span> <span class="mx-4 text-gray-300">|</span> 答對 ${h.correct} / ${h.total} 題</div>
+                                <div class="bg-gray-50 p-5 md:p-6 rounded-2xl border border-gray-200 flex justify-between items-center hover:bg-indigo-50 hover:border-indigo-200 transition-colors">
+                                    <div class="text-lg md:text-xl">
+                                        <div class="font-black text-gray-700 mb-2 text-xl md:text-2xl">${h.date}</div>
+                                        <div class="text-gray-500 font-bold">範圍：<span class="text-indigo-600">${h.subject || '全部'}</span> | <span class="text-amber-600">${h.bank || '全部'}</span> <span class="mx-3 text-gray-300">|</span> 答對 ${h.correct} / ${h.total} 題</div>
                                     </div>
-                                    <div class="text-5xl md:text-6xl font-black ${h.score >= 80 ? 'text-green-500' : (h.score < 60 ? 'text-red-500' : 'text-blue-500')}">${h.score}<span class="text-3xl ml-3 text-gray-500">分</span></div>
+                                    <div class="text-4xl md:text-5xl font-black ${h.score >= 80 ? 'text-green-500' : (h.score < 60 ? 'text-red-500' : 'text-blue-500')}">${h.score}<span class="text-2xl ml-2 text-gray-500">分</span></div>
                                 </div>
                             `).join('')}
                         </div>
