@@ -22,8 +22,13 @@
     <div class="max-w-7xl mx-auto w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 flex flex-col h-full">
         <div class="bg-amber-600 p-5 text-white flex justify-between items-center shrink-0">
             <h1 class="text-2xl font-black flex items-center gap-2"><i class="fas fa-database"></i> 會考模擬題庫管理系統 (CAP-Exam)</h1>
-            <div id="status-badge" class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-inner flex items-center">
-                <i class="fas fa-times-circle mr-1"></i>未連線
+            <div class="flex items-center gap-3">
+                <button onclick="window.location.href='index.html'" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors shadow-sm flex items-center border border-white/30">
+                    <i class="fas fa-home mr-2"></i>回到主程式
+                </button>
+                <div id="status-badge" class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-inner flex items-center">
+                    <i class="fas fa-times-circle mr-1"></i>未連線
+                </div>
             </div>
         </div>
 
