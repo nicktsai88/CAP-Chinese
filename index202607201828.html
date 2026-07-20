@@ -475,9 +475,6 @@
 
                     <!-- Bottom Actions -->
                     <div class="p-4 border-t border-gray-100 space-y-2 shrink-0 hidden md:block">
-                        <button onclick="window.open('migration_tool.html', '_blank')" class="w-full flex items-center justify-center bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-bold py-2 rounded-md transition-colors text-sm border border-indigo-200 shadow-sm">
-                            <i class="fas fa-database mr-2"></i>題庫管理系統
-                        </button>
                         <button onclick="forceRefreshData()" class="w-full bg-amber-400 hover:bg-amber-500 text-white font-bold py-2 rounded-md transition-colors text-sm shadow-sm">
                             系統重新整理
                         </button>
@@ -560,33 +557,6 @@
             `;
         };
 
-        const renderDbDashboard = () => {
-            const counts = {};
-            BANKS.forEach(b => counts[b] = 0);
-            allQuestions.forEach(q => {
-                if (counts[q.bank] !== undefined) counts[q.bank]++;
-            });
-            
-            return `
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 mb-6">
-                    <h3 class="text-sm font-bold text-gray-500 mb-3 flex items-center"><i class="fas fa-server mr-2 text-indigo-400"></i>資料庫題本收錄狀態</h3>
-                    <div class="flex flex-wrap gap-3">
-                        ${BANKS.filter(b => b !== "全部").map(b => {
-                            const count = counts[b] || 0;
-                            const isAvail = count > 0;
-                            return `
-                                <div class="flex items-center px-3 py-1.5 rounded-lg border ${isAvail ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}">
-                                    <div class="w-2.5 h-2.5 rounded-full mr-2 ${isAvail ? 'bg-green-500 animate-pulse' : 'bg-gray-300'}"></div>
-                                    <span class="text-sm font-bold ${isAvail ? 'text-green-700' : 'text-gray-500'}">${b}</span>
-                                    <span class="ml-2 text-xs font-black ${isAvail ? 'text-green-600 bg-green-200' : 'text-gray-400 bg-gray-200'} px-2 py-0.5 rounded-full">${count} 題</span>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                </div>
-            `;
-        };
-
         window.updateFiltersAndRenderLearn = () => {
             currentFilter.bank = document.getElementById('filter-bank').value;
             currentFilter.volume = document.getElementById('filter-volume').value;
@@ -605,7 +575,6 @@
             let html = `
                 <div class="max-w-5xl mx-auto animate-fade-in">
                     <h2 class="text-2xl font-black text-gray-800 mb-6 border-l-4 border-amber-500 pl-3">試題學習解析</h2>
-                    ${renderDbDashboard()}
                     ${renderFilterBar('updateFiltersAndRenderLearn()')}
             `;
 
@@ -681,7 +650,6 @@
                 let html = `
                     <div class="max-w-5xl mx-auto h-full flex flex-col animate-fade-in">
                         <h2 class="text-2xl font-black text-gray-800 mb-6 border-l-4 border-amber-500 pl-3">線上測驗系統</h2>
-                        ${renderDbDashboard()}
                         ${renderFilterBar('updateFiltersAndRenderQuiz()')}
                         
                         <div class="flex-1 flex items-center justify-center">
